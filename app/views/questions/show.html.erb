@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question.content %>
+</p>
+<p>
+  <strong>Answers:</strong>
+  <ul>
+    <%@question.answers.each do |ans|%>
+      <li class="answer"><%=ans.content%></li>
+    <%end%>
+  </ul>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @question.topic.try(:name) %>&nbsp;&nbsp;<button type="button" class= "btn-xs follow follow_topic"><%=link_to "Follow", follow_path(topic_id: @question.topic.id, id:@question.id)%></button>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @question.user.try(:name) %>&nbsp;&nbsp;<button type="button" class= "btn-xs follow follow_user"><%=link_to "Follow", follow_path(user_id: @question.user.id, id: @question.id)%></button>
+</p>
+<%= link_to 'Back', questions_path %>
+<%#= link_to 'Edit', edit_question_path(@question) %> <%#= link_to 'Back', questions_path %>

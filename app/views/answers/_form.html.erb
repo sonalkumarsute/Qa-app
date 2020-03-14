@@ -1,0 +1,33 @@
+<%= form_with(model: answer, local: true) do |form| %>
+  <% if answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% answer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, id: :answer_content %>
+  </div>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <div class="field">
+    <%= form.label :question_id %>
+    <%= form.select :question_id, options_for_select(Question.pluck(:content,:id)) ,{:prompt => "--select question--"}, :class => 'form-control', required: true %>
+    <%#= form.number_field :question_id, id: :answer_question_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.check_box :status, id: :answer_status %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

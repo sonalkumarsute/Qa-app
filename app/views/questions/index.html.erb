@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+
+<div>
+  <% @questions.each do |question| %>
+    <div class="row">
+      <h4><%= link_to question.content, question, class: 'question'%></h4>
+      <ul>
+        <%question.answers.each do |ans|%>
+          <li class="answer"><%=ans.content%></li>
+        <%end%>
+      </ul>  
+      <%= question.user.name %></br>
+      Topic: <%= question.topic.name %>
+    </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'Ask Question', new_question_path %>
