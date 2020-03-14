@@ -12,7 +12,7 @@ gem 'rails', '~> 5.1.5'
 #gem 'sqlite3'
 gem 'mysql2'
 gem 'devise'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 # Use Puma as the app server
 gem 'webrick'
 #gem 'puma', '~> 3.7'
